@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    link(rel="manifest" href="static/manifest.json")
+    link(rel="stylesheet" href="app.css?v=5")
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Droplet Engine
+  body
+    .de_version #{version}
+    .de_main-wrapper
+
+    script.
+      function loadApp() {
+        var script = document.createElement('script');
+        script.src = isChrome ? 'app.js' : 'app-fallback.js';
+        document.body.appendChild(script);
+      }
+
+      var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+
+      if (!isChrome) {
+        var scriptElements = document.createElement('script');
+        scriptElements.onload = function() {
+          loadApp(isChrome);
+        };
+        scriptElements.src = 'vendor/customelements.min.js';
+        document.body.appendChild(scriptElements);
+      } else {
+        loadApp(isChrome);
+      }
