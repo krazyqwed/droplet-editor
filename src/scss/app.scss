@@ -3,3 +3,46 @@
 *:after {
   box-sizing: border-box
 }
+
+html {
+  background: #ecf0f1;
+}
+
+body {
+  background: #ecf0f1;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-size: 12px;
+  margin: 0;
+}
+
+.de {
+  &_wrapper {
+    display: flex;
+    flex-direction: columns;
+    flex-wrap: wrap;
+    margin: 8px;
+  }
+
+  &_box {
+    margin: 8px;
+
+    &--left {
+      flex: 0 0 400px;
+    }
+
+    &--right {
+      flex: 1 0 auto;
+    }
+
+    &--bottom {
+      flex: 1 0 100%;
+    }
+
+    &__content {
+      background: #fff;
+      height: 200px;
+      padding: 16px;
+      position: relative;
+    }
+  }
+}
